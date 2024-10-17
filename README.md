@@ -1,5 +1,10 @@
 # Take Home Test Interview
-
+### Tata Cara Pengerjaan soal
+- clone repository template ini kedalam repository github pribadi anda.
+- submit jawaban / hasil dengan push ke repository yang telah anda buat sebelumnya sebagai public access repo.
+- kirimkan link repo anda ke email jefri.arbi+be_candidate@noble-software.com
+- pengerjaan dalam waktu < 7 hari mendapatkan poin ekstra
+  
 ## Soal 1: Django + gRPC Integration
 
 ### Deskripsi:
