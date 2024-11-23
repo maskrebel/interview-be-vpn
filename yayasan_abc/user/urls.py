@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, Users, SSOLoginView, SSOLogoutView
+from .views import HomeView, Users, SSOLoginView, SSOLogoutView, UserInfo
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -10,4 +10,5 @@ urlpatterns = [
     # authentication
     path('auth/login/', SSOLoginView.as_view(), name='token_login'),
     path('auth/logout/', SSOLogoutView.as_view(), name='token_logout'),
+    path('auth/info/', UserInfo.as_view(), name='user_info'),
 ]
