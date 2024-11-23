@@ -1,2 +1,4 @@
 Django==3.2.13
 djangorestframework==3.12.1
+uvicorn==0.32.1
+djangorestframework-simplejwt==5.3.1
