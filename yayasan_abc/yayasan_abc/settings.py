@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'user',
     'grpc_service',
+    'sso',
 ]
 
 MIDDLEWARE = [

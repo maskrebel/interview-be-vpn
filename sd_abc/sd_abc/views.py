@@ -14,14 +14,15 @@ class HomeView(APIView):
             try:
                 headers = {
                     'token': f'{access_token}',
+                    'apiKey': settings.SSO_API_KEY,
                 }
 
                 response = requests.request("GET", settings.URL_SSO_USER_INFO, headers=headers)
+                if response.status_code == 200:
+                    data = json.loads(response.text)
+                    user = data['user']
 
-                data = json.loads(response.text)
-                user = data['user']
-
-                contexts['user'] = user
+                    contexts['user'] = user
 
             except Exception as e:
                 pass
