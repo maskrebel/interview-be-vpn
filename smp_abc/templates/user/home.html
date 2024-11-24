@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            margin-bottom: 20px;
+        }
+        .logout-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if user.username %}
+            <h1>Welcome {{ user.username }}, to the Home SMP Page</h1>
+            <p>You are successfully logged in!</p>
+            <form action="{% url 'token_logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        {% else %}
+            <h1>Welcome to the Home SMP Page</h1>
+            <p>You must signIn for access feature!</p>
+            <button type="submit"  class="logout-btn" onclick="window.location.href='{{ sso_url }}/auth/login/?redirectURI='+ window.location.origin;">Login</button>
+
+        {% endif %}
+
+    </div>
+</body>
+</html>
