@@ -1,4 +1,4 @@
-FROM nginx:1.11.5-alpine
+FROM nginx:1.26.2-alpine
 
 RUN apk --no-cache add openssl
 RUN cd /etc/nginx && openssl genrsa -out _.abc.sch.id.key 2048 && \
