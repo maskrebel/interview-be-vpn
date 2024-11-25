@@ -28,9 +28,9 @@ class SSOLoginView(APIView):
 
             response.set_cookie(
                 'access_token', access_token,
-                httponly=True,
-                secure=settings.SECURE_COOKIES,
-                max_age=3600
+                secure=settings.ACCESS_TOKEN_SECURE_COOKIES,
+                max_age=3600,
+                domain=settings.ACCESS_TOKEN_DOMAIN,
             )
 
             return response
@@ -43,7 +43,7 @@ class SSOLogoutView(APIView):
         token = request.COOKIES.get('access_token')
         response = redirect('/')
         if token:
-            response.delete_cookie('access_token')
+            response.delete_cookie('access_token', domain=settings.ACCESS_TOKEN_DOMAIN)
         return response
 
 class UserInfo(APIView):

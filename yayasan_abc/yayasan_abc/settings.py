@@ -144,7 +144,8 @@ SIMPLE_JWT = {
     'ALGORITHM': 'HS256',
 }
 
-# INSTALLED_APPS += ['rest_framework_simplejwt.token_blacklist']
-# SIMPLE_JWT['BLACKLIST_AFTER_ROTATION'] = True
+# set cookies
+ACCESS_TOKEN_SECURE_COOKIES = os.environ.get('ACCESS_TOKEN_SECURE_COOKIES', 'my_secure_cookie')
+ACCESS_TOKEN_DOMAIN = os.environ.get('ACCESS_TOKEN_DOMAIN', '.abc.sch.id')
 
-SECURE_COOKIES = 'my_secure_cookie'
+GRPC_HOST = os.environ.get('GRPC_HOST', 'https://grc.abc.sch.id') # default: localhost:50051
