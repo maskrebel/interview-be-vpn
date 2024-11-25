@@ -1,11 +1,11 @@
-from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth import authenticate
+from django.shortcuts import redirect, render
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.exceptions import InvalidToken
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .helpers import IsAuthenticated
 
@@ -45,6 +45,7 @@ class SSOLogoutView(APIView):
         if token:
             response.delete_cookie('access_token', domain=settings.ACCESS_TOKEN_DOMAIN)
         return response
+
 
 class UserInfo(APIView):
     permission_classes = [IsAuthenticated]

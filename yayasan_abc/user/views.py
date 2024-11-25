@@ -3,8 +3,8 @@ import grpc
 from grpc_service import user_pb2, user_pb2_grpc
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.exceptions import InvalidToken
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.exceptions import InvalidToken
 
 
 class Users(APIView):
