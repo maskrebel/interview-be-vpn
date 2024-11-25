@@ -1,0 +1,40 @@
+version: '2.1'
+
+services:
+  yayasan:
+    container_name: yayasan_abc
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: /usr/sbin/sshd -D
+    ports:
+      - '8000:8000'
+      - '8001:8001'
+      - '8002:8002'
+      - '8003:8003'
+      - '50051:50051'
+      - '1122:22'
+    volumes:
+      - '.:/code'
+
+  proxy:
+    container_name: proxy
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    ports:
+      - '7777:7777'
+      - '443:443'
+    volumes:
+      - ./logs:/var/log/yayasan
+
+    networks:
+      default:
+        aliases:
+          - "yayasan.abc.sch.id"
+          - "grpc.abc.sch.id"
+          - "sd.abc.sch.id"
+          - "smp.abc.sch.id"
+          - "sma.abc.sch.id"
+    depends_on:
+      - yayasan
