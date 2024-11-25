@@ -2,15 +2,15 @@ import json
 
 from custom_hash.hashes import CustomPBKDF2PasswordHasher
 from django.conf import settings
-from django.shortcuts import render, redirect
-from rest_framework.views import APIView
+from django.shortcuts import redirect, render
 import requests
+from rest_framework.views import APIView
 
 
 class HomeView(APIView):
     def get(self, request):
         access_token = request.COOKIES.get('access_token')
-        contexts = {'sso_url' : settings.URL_SSO_ROOT}
+        contexts = {'sso_url': settings.URL_SSO_ROOT}
         if access_token:
             try:
                 hasher = CustomPBKDF2PasswordHasher()
@@ -29,7 +29,7 @@ class HomeView(APIView):
                     contexts['user'] = user
 
             except Exception as e:
-                pass
+                print(e)
 
         return render(request, 'user/home.html', contexts)
 
