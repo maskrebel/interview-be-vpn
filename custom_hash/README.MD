@@ -1,5 +1,3 @@
-from distutils.core import setup
-
 # CustomPBKDF2PasswordHasher
 Repository ini berisi implementasi dari password hasher custom yang menggunakan algoritma PBKDF2 dengan SHA-512 sebagai metode digest. 
 
