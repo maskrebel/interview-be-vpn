@@ -8,21 +8,17 @@ Hasher custom ini dirancang untuk bekerja dengan _secret-key_ yang berbeda di se
 Hal memungkinkan validasi password di berbagai aplikasi menggunakan sistem Single Sign-On (SSO) dengan _secret-key_ yang disatukan.
 
 ## Daftar Isi
-Ringkasan
+[Installation](#Installation)
 
-Installation
+[Penggunaan](#Penggunaan)
 
-Cara Penggunaan
+[Cara Penggunaan](#cara-penggunaan)
 
-Cara Kerja
+[Cara Kerja](#cara-kerja)
 
-Pertimbangan Keamanan
+[Pertimbangan Keamanan](#pertimbangan-keamanan)
 
-Ringkasan
-
-Dalam sistem ini, password di-hash menggunakan algoritma PBKDF2 dengan SHA-512. Algoritma ini adalah fungsi derivasi kunci yang dirancang untuk membuat proses hashing menjadi computationally expensive (memakan banyak sumber daya), sehingga melindungi password dari serangan brute force. Implementasi kustom ini memungkinkan setiap proyek memiliki kunci rahasia dan salt yang unik, namun masih bisa memvalidasi password di seluruh aplikasi menggunakan unified secret key pada sistem SSO.
-
-Hasher custom ini juga menggunakan encoding base64 untuk mengelola salt dan hash, dan memisahkan data dengan karakter separator **|** dalam format tertentu.
+[Ringkasan](#ringkasan)
 
 ## Installation
 - pip install
@@ -38,7 +34,7 @@ python custom_hash/setup.py install
 ## Penggunaan
 Anda dapat menggunakan hasher ini sama seperti hasher password lainnya di Django. Fungsi encode() digunakan untuk melakukan hash pada password dengan salt yang ditentukan, sedangkan verify() digunakan untuk memverifikasi apakah password yang diberikan sesuai dengan hash yang tersimpan.
 
-### Contoh Penggunaan:
+## Cara Penggunaan
 _copy code ini ke project kamu_
 ```
 from custom_hash.hashes import CustomPBKDF2PasswordHasher
@@ -95,3 +91,10 @@ PBKDF2 adalah algoritma yang dirancang untuk memperlambat proses hashing dan mem
 SHA-512 adalah algoritma hash yang kuat dan saat ini dianggap aman.
 Salt yang unik untuk setiap password memastikan bahwa meskipun dua pengguna memiliki password yang sama, hash mereka tetap berbeda.
 Penggunaan constant-time comparison (perbandingan waktu tetap) saat memverifikasi password menghindari serangan berbasis waktu (timing attack).
+
+## Ringkasan
+
+Dalam sistem ini, password di-hash menggunakan algoritma PBKDF2 dengan SHA-512. 
+Algoritma ini adalah fungsi derivasi kunci yang dirancang untuk membuat proses hashing menjadi computationally expensive (memakan banyak resorce), sehingga melindungi password dari serangan brute force. Implementasi kustom ini memungkinkan setiap proyek memiliki kunci rahasia dan salt yang unik, namun masih bisa memvalidasi password di seluruh aplikasi menggunakan unified secret key pada sistem SSO.
+
+Hasher custom ini juga menggunakan encoding base64 untuk mengelola salt dan hash, dan memisahkan data dengan karakter separator **|** dalam format tertentu.
