@@ -127,6 +127,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # SSO access
-URL_SSO_ROOT = os.environ.get('URL_SSO_ROOT', 'http://localhost:8000')
+URL_SSO_ROOT = os.environ.get('URL_SSO_ROOT', 'https://yayasan.abc.sch.id')
 URL_SSO_USER_INFO = os.environ.get('URL_SSO_USER_INFO', "http://127.0.0.1:8000/auth/info/")
 SSO_API_KEY = os.environ.get('SSO_API_KEY', 'wOA1syGKRh')
+ACCESS_TOKEN_DOMAIN = os.environ.get('ACCESS_TOKEN_DOMAIN', '.abc.sch.id')

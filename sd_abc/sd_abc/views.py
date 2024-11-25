@@ -39,5 +39,5 @@ class SSOLogoutView(APIView):
         token = request.COOKIES.get('access_token')
         response = redirect('/')
         if token:
-            response.delete_cookie('access_token')
+            response.delete_cookie('access_token', domain=settings.ACCESS_TOKEN_DOMAIN)
         return response
